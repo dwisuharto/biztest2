@@ -14,6 +14,13 @@ abstract class Record {
         $className = get_called_class();
         $newObj = new $className($db, $data);
         $newObj->isNewByCreate = true;
+
+        if (is_array($data) && count($data) > 0) {
+            foreach ($data as $key => $value) {
+                $newObj->$key = $value;
+            }
+        }
+
         return $newObj;
     }
 

@@ -11,14 +11,8 @@ class Contact extends Record {
     public $email;
     public $msg;
 
-    function __construct($db = null, $data = array()) {
+    function __construct($db = null) {
         $this->db = $db;
-
-        if (is_array($data) && count($data) > 0) {
-            foreach ($data as $key => $value) {
-                $this->$key = $value;
-            }
-        }
     }
 
 }
