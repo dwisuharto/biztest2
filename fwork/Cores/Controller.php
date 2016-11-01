@@ -7,7 +7,8 @@ require_once "Mustache/Autoloader.php";
 class Controller {
 
     private $mustache;
-    protected  $configs;
+    protected $configs;
+    public $request;
 
     function __construct() {
         \Mustache_Autoloader::register();

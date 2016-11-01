@@ -13,7 +13,7 @@ class Home extends Controller {
     /*
      * this is a default function to be called related to pre-defined route
      */
-    public function defaultPath() {
+    public function index() {
         $cnt = array(
             'webtitle' => $this->configs['webtitle'],
             'baseurl' => $this->configs['baseurl']

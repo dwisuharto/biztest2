@@ -2,30 +2,54 @@
 <h1>Contact Form</h1>
 <hr noshade/>
 <form class="form-horizontal" method="post" action="{{ baseurl }}/contact/submit">
+    <input type="hidden" id="contactId" name="contactId" value="{{ contact.id }}"/>
     <div class="form-group col-lg-12">
         <label class="control-label col-lg-3" for="contactFname">Full Name</label>
         <div class="col-lg-9">
-            <input type="text" class="form-control" id="contactFname" name="contactFname"/>
+            <input type="text" class="form-control" id="contactFname" name="contactFname" value="{{ contact.name }}"/>
         </div>
     </div>
     <div class="form-group col-lg-12">
         <label class="control-label col-lg-3" for="contactEmail">Email</label>
         <div class="col-lg-9">
-            <input type="email" class="form-control" id="contactEmail" name="contactEmail"/>
+            <input type="email" class="form-control" id="contactEmail" name="contactEmail" value="{{ contact.email }}"/>
         </div>
     </div>
     <div class="form-group col-lg-12">
         <label class="control-label col-lg-3" for="contactMsg">Message</label>
         <div class="col-lg-9">
-            <textarea class="form-control" id="contactMsg" name="contactMsg" rows="5" cols="20"></textarea>
+            <textarea class="form-control" id="contactMsg" name="contactMsg" rows="5" cols="20">{{ contact.msg }}</textarea>
         </div>
     </div>
     <div class="form-group col-lg-12">
         <div class="col-lg-3">&nbsp</div>
         <div class="col-lg-9">
             <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Submit</button>
-            <button type="button" class="btn btn-warning"><i class="fa fa-arrow-left" onclick="javascript:location.href = '{{ baseurl }}';"></i> Back</button>
+            <button type="button" class="btn btn-warning" data-url="{{ baseurl }}"><i class="fa fa-arrow-left"></i> Back</button>
         </div>
     </div>
 </form>
+<hr noshade>
+<table class="table">
+<thead>
+    <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Message</th>
+        <th>Action</th>
+    </tr>
+</thead>
+<tbody>
+{{#contacts}}
+<tr>
+    <td>{{ id }}</td>
+    <td>{{ name }}</td>
+    <td>{{ email }}</td>
+    <td>{{ msg }}</td>
+    <td><a href="{{ baseUrl }}contact/edit/{{ id }}">Edit</a> | <a href="{{ baseUrl }}contact/delete/{{ id }}">Del</a></td>
+</tr>
+{{/contacts}}
+</tbody>
+</table>
 {{> foot }}
